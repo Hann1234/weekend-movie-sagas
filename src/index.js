@@ -52,11 +52,21 @@ const genres = (state = [], action) => {
     }
 }
 
+// Movie Details Reducer
+
+const details = (state = [], action) => {
+    if (action.type === 'DETAILS') {
+        return (state = action.payload);
+    }
+    return state;
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        details,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
