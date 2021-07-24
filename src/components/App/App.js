@@ -17,9 +17,9 @@ function App() {
           <Details />
         </Route>
         {/* Add Movie page */}
-        <Route path="/addmovie" exact>
+        {/* <Route path="/addmovie" exact>
           <AddMovie />
-        </Route>
+        </Route> */}
       </Router>
     </div>
   );
