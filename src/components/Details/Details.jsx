@@ -10,6 +10,10 @@ function Details() {
 
     const history = useHistory();
 
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_GENRES', payload: id});
+    // }, []);
+
     const handleClick = () => {
         history.push('/');
     }
@@ -21,14 +25,12 @@ function Details() {
             <h3>{movies[movieID-1].title}</h3>
             <img src={movies[movieID-1].poster} />
             <h5>Genres:</h5>
-                {/* {genres.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img onClick={() => goToDetails(movie.id)} src={movie.poster} alt={movie.title}/>
-                        </div>
-                    );
-                })} */}
+                <ul>
+                    {genres.map((item) => {
+                 // must return each item!
+                    return <li key={item.id}>{item.name}</li>;
+                    })}
+                </ul>
             <p>{movies[movieID-1].description}</p>
             <button onClick={() => handleClick()}>Return</button>
         </div>
