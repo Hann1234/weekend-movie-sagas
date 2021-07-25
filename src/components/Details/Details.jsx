@@ -1,12 +1,14 @@
 import React from 'react';
 import {  useSelector } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 function Details() {
 
     const movieID = useSelector(store => store.movieID);
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
+
+    // const {id} = useParams(); 
 
     const history = useHistory();
 

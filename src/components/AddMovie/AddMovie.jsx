@@ -54,7 +54,7 @@ function AddMovie() {
         dispatch({
             type: 'ADD_MOVIE',
             // Pass in the information, that we're tracking in state
-            payload: {title, poster, description, genre}
+            payload: {title: title, poster: poster, description: description, genre_id: genre}
         });
 
         // Clear the form field
@@ -99,7 +99,7 @@ function AddMovie() {
                     >
                         {allGenres.map((item) => {
                             return (
-                            <MenuItem key={item.id} value={item.name}>{item.name}</MenuItem>
+                            <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
                             )
                         })}
                     </Select>
