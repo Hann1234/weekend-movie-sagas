@@ -22,7 +22,7 @@ function Details() {
 
     console.log(genres);
 
-    return (
+    return ( // so in order to get the bellow to work with using ID-1 as the index, the table has to be ordered by 'id' not by 'name'. I have to use useParams to be able to sort by name.
         <div>
             <h3>{movies[movieID-1].title}</h3>
             <img src={movies[movieID-1].poster} />
