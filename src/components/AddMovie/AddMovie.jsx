@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 
@@ -30,6 +30,11 @@ function AddMovie() {
     const dispatch = useDispatch();
     const history = useHistory();
     const classes = useStyles();
+    const allGenres = useSelector(store => store.allGenres);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_ALL_GENRES' });
+    }, []);
 
     const handleChange = (event) => {
      setGenre(event.target.value);
@@ -63,6 +68,8 @@ function AddMovie() {
         }
    };
 
+   console.log(allGenres);
+
     return (
         <div>
           <h2>Add Movie:</h2>
@@ -87,9 +94,11 @@ function AddMovie() {
                     value={genre}
                     onChange={handleChange}
                     >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        {allGenres.map((item) => {
+                            return (
+                            <MenuItem key={item.id} value={item.name}>{item.name}</MenuItem>
+                            )
+                        })}
                     </Select>
                 <button type="submit">Save Movie</button>
             </FormControl>
