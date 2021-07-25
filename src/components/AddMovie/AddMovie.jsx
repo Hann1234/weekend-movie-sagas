@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
@@ -46,7 +45,7 @@ function AddMovie() {
 
        // alert user to fill in missing input field
 
-       if (!title || !poster || !description) {
+       if (!title || !poster || !description || !genre) {
         alert('Please enter all input fields.')
         }
         
@@ -55,20 +54,24 @@ function AddMovie() {
         dispatch({
             type: 'ADD_MOVIE',
             // Pass in the information, that we're tracking in state
-            payload: {title, poster, description}
+            payload: {title, poster, description, genre}
         });
 
         // Clear the form field
         setTitle('');
         setPoster('');
         setDescription('');
-
+        setGenre('');
         // direct browser to next route
         history.push('/');
         }
    };
 
-   console.log(allGenres);
+   const handleClick = () => {
+    history.push('/');
+}
+
+//    console.log(allGenres);
 
     return (
         <div>
@@ -103,6 +106,7 @@ function AddMovie() {
                 <button type="submit">Save Movie</button>
             </FormControl>
           </form>
+          <button onClick={() => handleClick()}>Cancel</button>
         </div>
       )
 }
